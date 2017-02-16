@@ -12,6 +12,7 @@ class Linkify extends React.Component {
     className: React.PropTypes.string,
     component: React.PropTypes.any,
     properties: React.PropTypes.object,
+    replacePart: React.PropTypes.string,
     urlRegex: React.PropTypes.object,
     emailRegex: React.PropTypes.object
   }
@@ -58,7 +59,7 @@ class Linkify extends React.Component {
       elements.push(React.createElement(
         this.props.component,
         props,
-        match.text
+        this.props.replacePart ? match.text.replace(this.props.replacePart, '') : match.text
       ));
       lastIndex = match.lastIndex;
     });
