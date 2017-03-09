@@ -83,7 +83,7 @@ var Linkify = function (_React$Component) {
 
           props[key] = val;
         }
-        elements.push(_react2.default.createElement(_this2.props.component, props, match.text));
+        elements.push(_react2.default.createElement(_this2.props.component, props, _this2.props.replacePart ? match.text.replace(_this2.props.replacePart, '') : match.text));
         lastIndex = match.lastIndex;
       });
 
@@ -116,13 +116,7 @@ var Linkify = function (_React$Component) {
     key: 'render',
     value: function render() {
       this.parseCounter = 0;
-      var parsedChildren = this.parse(this.props.children);
-
-      return _react2.default.createElement(
-        'span',
-        { className: this.props.className },
-        parsedChildren
-      );
+      return this.parse(this.props.children);
     }
   }]);
 
@@ -131,14 +125,13 @@ var Linkify = function (_React$Component) {
 
 Linkify.MATCH = 'LINKIFY_MATCH';
 Linkify.propTypes = {
-  className: _react2.default.PropTypes.string,
   component: _react2.default.PropTypes.any,
   properties: _react2.default.PropTypes.object,
+  replacePart: _react2.default.PropTypes.string,
   urlRegex: _react2.default.PropTypes.object,
   emailRegex: _react2.default.PropTypes.object
 };
 Linkify.defaultProps = {
-  className: 'Linkify',
   component: 'a',
   properties: {}
 };

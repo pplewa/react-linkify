@@ -9,7 +9,6 @@ class Linkify extends React.Component {
   static MATCH = 'LINKIFY_MATCH'
 
   static propTypes = {
-    className: React.PropTypes.string,
     component: React.PropTypes.any,
     properties: React.PropTypes.object,
     replacePart: React.PropTypes.string,
@@ -18,7 +17,6 @@ class Linkify extends React.Component {
   }
 
   static defaultProps = {
-    className: 'Linkify',
     component: 'a',
     properties: {},
   }
@@ -93,9 +91,7 @@ class Linkify extends React.Component {
 
   render() {
     this.parseCounter = 0;
-    const parsedChildren = this.parse(this.props.children);
-
-    return <span className={this.props.className}>{parsedChildren}</span>;
+    return this.parse(this.props.children);
   }
 }
 
