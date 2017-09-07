@@ -74,6 +74,9 @@ var Linkify = function (_React$Component) {
           elements.push(string.substring(lastIndex, match.index));
         }
         // Shallow update values that specified the match
+        if (_this2.props.formatUrl) {
+          match.url = _this2.props.formatUrl(match.url);
+        }
         var props = { href: match.url, key: 'parse' + _this2.parseCounter + 'match' + idx };
         for (var key in _this2.props.properties) {
           var val = _this2.props.properties[key];
@@ -83,7 +86,7 @@ var Linkify = function (_React$Component) {
 
           props[key] = val;
         }
-        elements.push(_react2.default.createElement(_this2.props.component, props, _this2.props.replacePart ? match.text.replace(_this2.props.replacePart, '') : match.text));
+        elements.push(_react2.default.createElement(_this2.props.component, props, _this2.props.formatText ? _this2.props.formatText(match.text) : match.text));
         lastIndex = match.lastIndex;
       });
 
@@ -127,7 +130,8 @@ Linkify.MATCH = 'LINKIFY_MATCH';
 Linkify.propTypes = {
   component: _react2.default.PropTypes.any,
   properties: _react2.default.PropTypes.object,
-  replacePart: _react2.default.PropTypes.string,
+  formatText: _react2.default.PropTypes.any,
+  formatUrl: _react2.default.PropTypes.any,
   urlRegex: _react2.default.PropTypes.object,
   emailRegex: _react2.default.PropTypes.object
 };
