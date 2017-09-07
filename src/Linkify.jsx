@@ -11,7 +11,8 @@ class Linkify extends React.Component {
   static propTypes = {
     component: React.PropTypes.any,
     properties: React.PropTypes.object,
-    replacePart: React.PropTypes.string,
+    formatText: React.PropTypes.any,
+    formatUrl: React.PropTypes.any,
     urlRegex: React.PropTypes.object,
     emailRegex: React.PropTypes.object
   }
@@ -45,6 +46,9 @@ class Linkify extends React.Component {
         elements.push(string.substring(lastIndex, match.index));
       }
       // Shallow update values that specified the match
+      if (this.props.formatUrl) {
+        match.url = this.props.formatUrl(match.url);
+      }
       let props = {href: match.url, key: `parse${this.parseCounter}match${idx}`};
       for (let key in this.props.properties) {
         let val = this.props.properties[key];
@@ -57,7 +61,7 @@ class Linkify extends React.Component {
       elements.push(React.createElement(
         this.props.component,
         props,
-        this.props.replacePart ? match.text.replace(this.props.replacePart, '') : match.text
+        this.props.formatText ? this.props.formatText(match.text) : match.text
       ));
       lastIndex = match.lastIndex;
     });
