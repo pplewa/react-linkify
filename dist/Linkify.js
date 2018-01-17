@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _linkifyIt = require('linkify-it');
 
 var _linkifyIt2 = _interopRequireDefault(_linkifyIt);
@@ -128,12 +132,12 @@ var Linkify = function (_React$Component) {
 
 Linkify.MATCH = 'LINKIFY_MATCH';
 Linkify.propTypes = {
-  component: _react2.default.PropTypes.any,
-  properties: _react2.default.PropTypes.object,
-  formatText: _react2.default.PropTypes.any,
-  formatUrl: _react2.default.PropTypes.any,
-  urlRegex: _react2.default.PropTypes.object,
-  emailRegex: _react2.default.PropTypes.object
+  component: _propTypes2.default.any,
+  properties: _propTypes2.default.object,
+  formatText: _propTypes2.default.any,
+  formatUrl: _propTypes2.default.any,
+  urlRegex: _propTypes2.default.object,
+  emailRegex: _propTypes2.default.object
 };
 Linkify.defaultProps = {
   component: 'a',

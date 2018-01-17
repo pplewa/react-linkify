@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LinkifyIt from 'linkify-it';
 import tlds from 'tlds';
 
@@ -9,12 +10,12 @@ class Linkify extends React.Component {
   static MATCH = 'LINKIFY_MATCH'
 
   static propTypes = {
-    component: React.PropTypes.any,
-    properties: React.PropTypes.object,
-    formatText: React.PropTypes.any,
-    formatUrl: React.PropTypes.any,
-    urlRegex: React.PropTypes.object,
-    emailRegex: React.PropTypes.object
+    component: PropTypes.any,
+    properties: PropTypes.object,
+    formatText: PropTypes.any,
+    formatUrl: PropTypes.any,
+    urlRegex: PropTypes.object,
+    emailRegex: PropTypes.object
   }
 
   static defaultProps = {
